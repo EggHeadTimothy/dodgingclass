@@ -28,7 +28,8 @@ class Dodger:
             self._check_events()
             self.player.update()
             self._update_screen()
-            self._create_baddie()
+            self._create_baddies()
+            self.update_baddies()
             self.clock.tick(60)
 
 
@@ -75,7 +76,7 @@ class Dodger:
         # Make the most recently drawn screen visible.
         pygame.display.flip()
 
-    def _create_baddie(self):
+    def _create_baddies(self):
         new_baddie = Baddie(self)
         self.baddies.add(new_baddie)
 

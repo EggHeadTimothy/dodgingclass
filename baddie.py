@@ -11,15 +11,15 @@ class Baddie(Sprite):
         self.screen_rect = dodger.screen.get_rect()
 
         baddie_size = random.randint(self.settings.baddie_min_size, self.settings.baddie_max_size)
-        baddie_speed = random.randint(self.settings.baddie_min_speed, self.settings.baddie_max_speed)
 
         # Load the image
-        self.image = pygame.image.load('baddie.png')
+        baddie_image = pygame.image.load('baddie.png')
+        scaled_baddie_image = pygame.transform.scale(baddie_image, (baddie_size, baddie_size))
+        self.image = scaled_baddie_image
         self.rect = self.image.get_rect()
 
         # Initialize attributes randomly
         self.size = baddie_size
-        self.speed = baddie_speed
 
         # Initialize position randomly
         self.rect.x = random.randint(0, self.settings.screen_width - self.size)
@@ -32,5 +32,6 @@ class Baddie(Sprite):
         self.screen.blit(self.image)
 
     def update(self):
-        self.y -= baddie_speed
+        baddie_speed = random.randint(self.settings.baddie_min_speed, self.settings.baddie_max_speed)
+        self.y += baddie_speed * 1
         self.rect.y = self.y
