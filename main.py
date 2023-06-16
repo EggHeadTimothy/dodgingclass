@@ -21,8 +21,7 @@ class Dodger:
 
         self.player = Player(self)
         self.baddies = pygame.sprite.Group()
-        test_baddie = Baddie(self)
-        self.baddies.add(test_baddie)
+
 
     def run_game(self):
         while True:
@@ -31,6 +30,7 @@ class Dodger:
             self._update_screen()
             self._create_baddie()
             self.clock.tick(60)
+
 
     def _check_events(self):
         """Respond to keypresses and mouse events."""
@@ -72,13 +72,15 @@ class Dodger:
         self.player.blitme()
         self.baddies.draw(self.screen)
 
-
         # Make the most recently drawn screen visible.
         pygame.display.flip()
 
     def _create_baddie(self):
         new_baddie = Baddie(self)
         self.baddies.add(new_baddie)
+
+    def update_baddies(self):
+        self.baddies.update()
 
 
 if __name__ == '__main__':
