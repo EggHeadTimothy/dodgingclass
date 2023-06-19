@@ -1,5 +1,6 @@
 import pygame
 
+
 class Player:
 
     def __init__(self, dodger):
@@ -25,7 +26,6 @@ class Player:
         self.moving_left = False
         self.moving_right = False
 
-
     def update(self):
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.player_speed
@@ -37,7 +37,6 @@ class Player:
             self.y += self.settings.player_speed
         self.rect.x = self.x
         self.rect.y = self.y
-
 
     def blitme(self):
         # Draw the player at its current location

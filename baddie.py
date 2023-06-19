@@ -2,6 +2,7 @@ import pygame
 import random
 from pygame.sprite import Sprite
 
+
 class Baddie(Sprite):
 
     def __init__(self, dodger):
@@ -20,6 +21,7 @@ class Baddie(Sprite):
 
         # Initialize attributes randomly
         self.size = baddie_size
+        self.baddie_speed = random.randint(self.settings.baddie_min_speed, self.settings.baddie_max_speed)
 
         # Initialize position randomly
         self.rect.x = random.randint(0, self.settings.screen_width - self.size)
@@ -32,6 +34,5 @@ class Baddie(Sprite):
         self.screen.blit(self.image)
 
     def update(self):
-        baddie_speed = random.randint(self.settings.baddie_min_speed, self.settings.baddie_max_speed)
-        self.y += baddie_speed * 1
+        self.y += self.baddie_speed
         self.rect.y = self.y
